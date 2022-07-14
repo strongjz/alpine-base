@@ -28,10 +28,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: distroless/actions/apko-snapshot@main
+    - uses: strongjz/distroless-actions/apko-snapshot@0f0fb8629f84d1edf45656cff729e46f3f3c1561
       with:
         config: .apko.yaml
         base-tag: ghcr.io/${{ github.repository }}
+        vulnerability-scan: 'true'
 
     # Post to slack when things fail.
     - if: ${{ failure() }}
